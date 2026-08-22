@@ -1,0 +1,28 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row mt-3">
+    <div class="col-10 offset-1">
+        <h3>Manage Users</h3>
+        <table class="table">
+            <thead>
+                <tr><th>Username</th><th>Email</th><th>City</th><th>Country</th><th>Admin</th><th></th></tr>
+            </thead>
+            <tbody>
+                <% users.forEach(function(u) { %>
+                    <tr>
+                        <td><%= u.username %></td>
+                        <td><%= u.email %></td>
+                        <td><%= u.city %></td>
+                        <td><%= u.country %></td>
+                        <td><%= u.isAdmin ? "Yes" : "No" %></td>
+                        <td>
+                            <form method="POST" action="/admin/users/<%= u._id %>?_method=DELETE" onsubmit="return confirm('Remove this user?');">
+                                <button class="btn btn-sm btn-outline-danger">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
