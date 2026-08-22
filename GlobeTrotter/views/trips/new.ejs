@@ -1,0 +1,64 @@
+<% layout("/layouts/boilerplate") %>
+<div class="row mt-3">
+    <div class="col-8 offset-2">
+        <br><br>
+        <h3>Plan a New Trip</h3>
+        <form method="POST" action="/trips" novalidate class="needs-validation" enctype="multipart/form-data">
+
+            <div class="mb-3">
+              <label for="title" class="form-label">Trip Title</label>
+              <input name="trip[title]" placeholder="e.g. Japan Adventure" type="text" class="form-control" required/>
+              <div class="invalid-feedback">Title should be valid</div>
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea name="trip[description]" class="form-control"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Cover Image</label>
+                <input name="trip[image]" type="file" class="form-control" />
+            </div>
+
+            <div class="row">
+                <div class="mb-3 col-md-6">
+                    <label for="place" class="form-label">Select a Place</label>
+                    <input name="trip[place]" placeholder="e.g. Tokyo" type="text" class="form-control" required/>
+                    <div class="invalid-feedback">Place should be valid</div>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label for="country" class="form-label">Country</label>
+                    <input name="trip[country]" placeholder="e.g. Japan" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="mb-3 col-md-6">
+                    <label for="startDate" class="form-label">Start Date</label>
+                    <input name="trip[startDate]" type="date" class="form-control" required/>
+                    <div class="invalid-feedback">Start date is required</div>
+                </div>
+
+                <div class="mb-3 col-md-6">
+                    <label for="endDate" class="form-label">End Date</label>
+                    <input name="trip[endDate]" type="date" class="form-control" required/>
+                    <div class="invalid-feedback">End date is required</div>
+                </div>
+            </div>
+
+            <br>
+            <button class="btn btn-dark add-btn">Create Trip &amp; Build Itinerary</button>
+
+        </form>
+
+        <hr>
+        <h5>Suggestions for Places to Visit / Activities to Perform</h5>
+        <p class="text-muted">
+            (Stretch goal — hardcode a few curated suggestions per popular
+            destination here to match the wireframe; no need for a real
+            recommendation engine in an 8-hour build.)
+        </p>
+    </div>
+</div>
