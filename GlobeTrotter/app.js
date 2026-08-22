@@ -7,7 +7,7 @@ dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 const express = require("express");
 const app= express();
-const mongoose= require("mongoose");
+
 const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate= require("ejs-mate");
@@ -30,6 +30,12 @@ const userRouter = require("./routes/user.js");
 
 
 const dbUrl = process.env.ATLASDB_URL;
+const mongoose = require("mongoose");
+require("dotenv").config();
+
+async function main() {
+    await mongoose.connect(process.env.ATLASDB_URL);
+}
 
 main()
 .then(()=>{
