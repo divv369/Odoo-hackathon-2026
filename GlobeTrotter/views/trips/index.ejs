@@ -1,0 +1,34 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row mt-3">
+    <div class="col-12 text-center py-5 mb-3" style="background: #f4f4f4; border-radius: 1rem;">
+        <h1>GlobeTrotter</h1>
+        <p class="text-muted">Plan your next adventure, one section at a time.</p>
+        <a href="/trips/new" class="btn btn-dark">+ Plan a Trip</a>
+    </div>
+</div>
+
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+  <% for(let trip of allTrips) { %>
+    <a href="/trips/<%= trip._id %>" class="trip-link">
+      <div class="card col trip-card">
+        <img
+          src="<%= trip.image.url %>"
+          class="card-img-top"
+          alt="trip_image"
+          style="height: 20rem; object-fit: cover;"
+        />
+        <div class="card-img-overlay"></div>
+        <div class="card-body">
+          <p class="card-text">
+            <b><%= trip.title %></b> <br />
+            <%= trip.place %><% if(trip.country) { %>, <%= trip.country %><% } %>
+          </p>
+        </div>
+      </div>
+    </a>
+  <% } %>
+  <% if(allTrips.length === 0) { %>
+    <p class="text-muted">No trips yet — be the first to <a href="/trips/new">plan one</a>.</p>
+  <% } %>
+</div>

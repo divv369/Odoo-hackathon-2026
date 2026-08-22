@@ -1,0 +1,69 @@
+<% layout("/layouts/boilerplate") %>
+<div class="row mt-3">
+  <div class="col-8 offset-2">
+    <h3>Build Itinerary — <%= trip.title %></h3>
+    <p class="text-muted">
+      Add sections for this trip — travel, hotel, or any other activity.
+      Each section can have a date range and its own budget.
+    </p>
+
+    <% trip.sections && trip.sections.forEach(function(section, i) { %>
+      <div class="card mb-3">
+        <div class="card-body">
+          <div class="d-flex justify-content-between align-items-start">
+            <h5 class="card-title">Section <%= i + 1 %>: <%= section.title %> <small class="text-muted">(<%= section.type %>)</small></h5>
+            <form method="POST" action="/trips/<%= trip._id %>/sections/<%= section._id %>?_method=DELETE">
+              <button class="btn btn-sm btn-outline-danger">Remove</button>
+            </form>
+          </div>
+          <p class="card-text mb-1">
+            Date Range:
+            <%= section.startDate ? section.startDate.toDateString() : "TBD" %>
+            to
+            <%= section.endDate ? section.endDate.toDateString() : "TBD" %>
+          </p>
+          <p class="card-text">Budget of this section: &#8377; <%= section.budget %></p>
+        </div>
+      </div>
+    <% }) %>
+
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Add another Section</h5>
+        <form method="POST" action="/trips/<%= trip._id %>/sections" novalidate class="needs-validation">
+          <div class="mb-2">
+            <label class="form-label">Title</label>
+            <input name="section[title]" type="text" class="form-control" placeholder="e.g. Flight to Tokyo" required/>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Type</label>
+            <select name="section[type]" class="form-select" required>
+              <option value="travel">Travel</option>
+              <option value="stay">Stay / Hotel</option>
+              <option value="activity">Activity</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="row">
+            <div class="mb-2 col-md-6">
+              <label class="form-label">Start Date</label>
+              <input name="section[startDate]" type="date" class="form-control"/>
+            </div>
+            <div class="mb-2 col-md-6">
+              <label class="form-label">End Date</label>
+              <input name="section[endDate]" type="date" class="form-control"/>
+            </div>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Budget of this section</label>
+            <input name="section[budget]" type="number" min="0" class="form-control" required/>
+          </div>
+          <button class="btn btn-dark add-btn mt-2">+ Add another Section</button>
+        </form>
+      </div>
+    </div>
+
+    <hr>
+    <a href="/trips/<%= trip._id %>" class="btn btn-outline-dark">Done — View Full Itinerary</a>
+  </div>
+</div>

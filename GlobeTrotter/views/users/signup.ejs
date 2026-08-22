@@ -1,0 +1,66 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="row mt-3">
+    <h1 class="col-6 offset-3">Register on GlobeTrotter</h1>
+    <div class="col-8 offset-2">
+        <form action="/signup" method="POST" class="needs-validation" novalidate enctype="multipart/form-data">
+
+            <div class="mb-3 text-center">
+                <label for="photo" class="form-label">Photo</label>
+                <input name="photo" id="photo" type="file" class="form-control" />
+            </div>
+
+            <div class="row">
+                <div class="mb-3 col-md-6">
+                    <label for="firstName" class="form-label">First Name</label>
+                    <input name="firstName" id="firstName" type="text" class="form-control" required/>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label for="lastName" class="form-label">Last Name</label>
+                    <input name="lastName" id="lastName" type="text" class="form-control" required/>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="mb-3 col-md-6">
+                    <label for="email" class="form-label">Email Address</label>
+                    <input name="email" id="email" type="email" class="form-control" required/>
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label for="phone" class="form-label">Phone Number</label>
+                    <input name="phone" id="phone" type="tel" class="form-control" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="mb-3 col-md-6">
+                    <label for="city" class="form-label">City</label>
+                    <input name="city" id="city" type="text" class="form-control" />
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label for="country" class="form-label">Country</label>
+                    <input name="country" id="country" type="text" class="form-control" />
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="additionalInfo" class="form-label">Additional Information</label>
+                <textarea name="additionalInfo" id="additionalInfo" class="form-control" rows="3"></textarea>
+            </div>
+
+            <hr>
+
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input name="username" id="username" type="text" class="form-control" required/>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input name="password" id="password" type="password" class="form-control" required/>
+            </div>
+
+            <button class="btn btn-success">Register Users</button>
+        </form>
+    </div>
+</div>
